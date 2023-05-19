@@ -114,8 +114,8 @@ bool BankSystem::transferMoney(BankAccount *fromAcc, string to, double amount) {
     BankAccount *toAcc;
     toAcc = getAccount(to);
 
-    if (fromAcc == nullptr || toAcc == nullptr) return false;
-    if (fromAcc -> getAccountBalance() < amount || amount < 0) return false;
+    if (fromAcc == nullptr || toAcc == nullptr || fromAcc -> getAccountNumber() == to) return false;
+    if (fromAcc -> getAccountBalance() < amount || amount <= 0) return false;
     
     fromAcc -> withdraw(amount, false);
     fromAcc -> saveTransaction("Transferred out " + std::to_string(amount) + " to account " + to);

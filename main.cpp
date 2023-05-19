@@ -68,7 +68,10 @@ void testProgram() {
             cout << "Logged out\n";
         } else if (cmd == "delete") {
             if (yourAccount == nullptr) cout << "No account selected.\n";
-            else BankSystem::removeAccount(yourAccount);
+            else {
+                BankSystem::removeAccount(yourAccount);
+                yourAccount = nullptr;
+            }
         }
         cout << '\n';
     }

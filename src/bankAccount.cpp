@@ -137,7 +137,7 @@ BankAccount &BankAccount::operator=(BankAccount&& o) noexcept {
  * @return false Error in deposite (invalid amount)
  */
 bool BankAccount::deposit(double amount, bool saveTrans) {
-    if (amount < 0) return false;
+    if (amount <= 0) return false;
 
     balance += amount;
     if (saveTrans) saveTransaction("Deposited " + std::to_string(amount));
@@ -154,7 +154,7 @@ bool BankAccount::deposit(double amount, bool saveTrans) {
  * @return false Error in withdrawal (invalid amount)
  */
 bool BankAccount::withdraw(double amount, bool saveTrans) {
-    if (balance < amount || amount < 0) return false;
+    if (balance < amount || amount <= 0) return false;
 
     balance -= amount;
     if (saveTrans) saveTransaction("Withdrawn " + std::to_string(amount));
