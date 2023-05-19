@@ -110,7 +110,7 @@ BankAccount *BankSystem::authenticate(string number) {
  * @return true Transfer successful
  * @return false Error in transfer (invalid account or insufficient amount)
  */
-bool BankSystem::transferMoney(BankAccount *fromAcc, string to, double amount) {
+bool BankSystem::transferMoney(BankAccount *fromAcc, string to, ld amount) {
     BankAccount *toAcc;
     toAcc = getAccount(to);
 

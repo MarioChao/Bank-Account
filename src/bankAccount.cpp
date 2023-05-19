@@ -43,7 +43,7 @@ BankAccount::BankAccount(string number) {
  * @param type The type of account
  * @param bal The amount of balance in the account
  */
-BankAccount::BankAccount(int type, double bal) {
+BankAccount::BankAccount(int type, ld bal) {
     if (type > 999) type = 999;
     if (type < 0) type = 0;
 
@@ -118,7 +118,6 @@ BankAccount::BankAccount(BankAccount&& o) noexcept {
  * @return BankAccount& 
  */
 BankAccount &BankAccount::operator=(BankAccount&& o) noexcept {
-    cout << "move assign\n" << std::flush;
     number = o.number;
     accountFolder = o.accountFolder;
     password = o.password;
@@ -136,7 +135,7 @@ BankAccount &BankAccount::operator=(BankAccount&& o) noexcept {
  * @return true Deposit successful
  * @return false Error in deposite (invalid amount)
  */
-bool BankAccount::deposit(double amount, bool saveTrans) {
+bool BankAccount::deposit(ld amount, bool saveTrans) {
     if (amount <= 0) return false;
 
     balance += amount;
@@ -153,7 +152,7 @@ bool BankAccount::deposit(double amount, bool saveTrans) {
  * @return true Withdraw successful
  * @return false Error in withdrawal (invalid amount)
  */
-bool BankAccount::withdraw(double amount, bool saveTrans) {
+bool BankAccount::withdraw(ld amount, bool saveTrans) {
     if (balance < amount || amount <= 0) return false;
 
     balance -= amount;
@@ -171,7 +170,7 @@ bool BankAccount::withdraw(double amount, bool saveTrans) {
  * @return true Transfer successful
  * @return false Error in transfer (invalid amount or number)
  */
-bool BankAccount::transferTo(string to, double amount) {
+bool BankAccount::transferTo(string to, ld amount) {
     return BankSystem::transferMoney(this, to, amount);
 }
 
@@ -262,9 +261,9 @@ string BankAccount::getAccountFolder() {
 /**
  * @brief Get the account balance of the bank account
  * 
- * @return double The account balance of the bank account
+ * @return ld The account balance of the bank account (long double)
  */
-double BankAccount::getAccountBalance() {
+ld BankAccount::getAccountBalance() {
     return balance;
 }
 
@@ -291,7 +290,7 @@ void BankAccount::retrieveAccountBalance() {
 
     string balStr;
     getline(balFile >> std::ws, balStr);
-    balance = stod(balStr);
+    balance = stold(balStr);
 
     balFile.close();
 }

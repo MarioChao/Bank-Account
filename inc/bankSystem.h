@@ -10,6 +10,8 @@ using std::vector;
 using std::cin;
 using std::cout;
 
+using ld = long double;
+
 class BankAccount;
 
 class BankSystem {
@@ -19,7 +21,7 @@ class BankSystem {
         static void retrieveAccounts();
 
         static BankAccount *authenticate(string);
-        static bool transferMoney(BankAccount *, string, double);
+        static bool transferMoney(BankAccount *, string, ld);
 
         static void listAccountNumbers();
     private:

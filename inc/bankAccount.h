@@ -13,22 +13,23 @@ using std::string;
 using std::cout;
 
 using ll = long long;
+using ld = long double;
 
 class Transaction;
 
 class BankAccount {
     public:
         BankAccount(string);
-        BankAccount(int, double);
+        BankAccount(int, ld);
         ~BankAccount();
         BankAccount(const BankAccount&);
         // BankAccount &operator=(const BankAccount&); // Copy assignment (not defined)
         BankAccount(BankAccount&&) noexcept;
         BankAccount &operator=(BankAccount&&) noexcept;
 
-        bool deposit(double, bool = true);
-        bool withdraw(double, bool = true);
-        bool transferTo(string, double);
+        bool deposit(ld, bool = true);
+        bool withdraw(ld, bool = true);
+        bool transferTo(string, ld);
         
         void showInfo();
         void showAccountNumber();
@@ -39,7 +40,7 @@ class BankAccount {
         
         string getAccountNumber();
         string getAccountFolder();
-        double getAccountBalance();
+        ld getAccountBalance();
         void saveAccountBalance();
         void retrieveAccountBalance();
 
@@ -63,7 +64,7 @@ class BankAccount {
         string encodePassword(string);
         
         int type;
-        double balance;
+        ld balance;
 
         Transaction *transHistory = nullptr;
 };

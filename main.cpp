@@ -89,7 +89,7 @@ void createAccount() {
     }
 
     cout << "Enter account balance:\n";
-    double bal;
+    ld bal;
     cout << ">";
     cin >> std::ws >> bal;
     while (!cin) {
@@ -126,7 +126,7 @@ void deposit() {
         return;
     }
     cout << "Enter amount to deposit:\n";
-    double amt;
+    ld amt;
     cout << ">";
     cin >> std::ws >> amt;
     while (!cin) {
@@ -147,7 +147,7 @@ void withdraw() {
         return;
     }
     cout << "Enter amount to withdraw:\n";
-    double amt;
+    ld amt;
     cout << ">";
     cin >> std::ws >> amt;
     while (!cin) {
@@ -177,8 +177,8 @@ void transfer() {
         cin >> std::ws >> number;
     }
 
-    cout << "Enter amount to:\n";
-    double amt;
+    cout << "Enter amount to transfer:\n";
+    ld amt;
     cout << ">";
     cin >> std::ws >> amt;
     while (!cin) {
